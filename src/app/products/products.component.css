@@ -1,0 +1,16 @@
+.active {
+    background-color: rgba(247, 142, 104, 0.966);
+}
+
+.mat-list-item {
+    font-weight: bold;
+}
+
+mat-card {
+    margin-bottom : 30px;
+    margin-left : 20px;
+}
+
+.sticky-top {
+    top: 80px;
+}

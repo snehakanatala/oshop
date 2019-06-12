@@ -1,3 +1,36 @@
-<p>
-  products works!
-</p>
+<div class="row">
+  <div class="col-3">
+    <div class="sticky-top">
+      <mat-action-list>
+        <a mat-list-item 
+          [class.active]="!categoryKey" 
+          routerLink="/">
+          All Categories
+        </a>
+        <a mat-list-item *ngFor="let categ of allCategories" 
+          routerLink="/" 
+          [queryParams]="{ category : categ.key }"
+          [class.active]="categ.key === categoryKey">
+          {{ categ.payload.name }}
+        </a>
+      </mat-action-list>
+    </div>
+  </div>
+  <div class="col-9">
+    <mat-grid-list cols="3">
+      <div *ngFor="let product of filteredProducts">
+        <mat-grid-tile>
+          <mat-card>
+            <img mat-card-image *ngIf="product.payload.imageUrl" [src]="product.payload.imageUrl" height="150"
+              width="200">
+            <mat-card-title>{{ product.payload.title }}</mat-card-title>
+            <mat-card-subtitle>{{ product.payload.price | currency : 'GBP' }}</mat-card-subtitle>
+            <mat-card-footer>
+              <button class="btn btn-primary btn-block">Add to cart</button>
+            </mat-card-footer>
+          </mat-card>
+        </mat-grid-tile>
+      </div>
+    </mat-grid-list>
+  </div>
+</div>

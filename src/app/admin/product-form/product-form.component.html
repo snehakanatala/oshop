@@ -1,21 +1,51 @@
-<form>
-  <div class="form-group">
-    <label for="title" >Title</label>
-    <input id="title" type="text" class="form-control">
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control"
+          required>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Title is required.</div>
+      </div>
+      <div class="form=group">
+        <label for="price">Price</label>
+        <div class="input-group">
+          <span class="input-group-prepend px-4">£</span>
+          <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control"
+            required [gte]=0>
+        </div>
+        <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+          <div *ngIf="price.errors.required">Price is required.</div>
+          <div *ngIf="price.errors.gte">Price should be 0 or higher.</div>
+        </div>
+      </div>
+      <div class="form=group">
+        <label for="category" class="mt-3">Category</label>
+        <select [(ngModel)]="product.category" name="category" id="category" class="form-control">
+          <option value=""></option>
+          <option *ngFor="let c of categories" [value]="c.payload.name"> {{ c.payload.name }} </option>
+        </select>
+      </div>
+      <div class="form=group">
+        <label for="imageUrl" class="mt-3">Image URL</label>
+        <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text"
+          class="form-control" required url>
+        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+          <div *ngIf="imageUrl.errors.url">Enter a valid URL.</div>
+          <div *ngIf="imageUrl.errors.required">Image URL is required.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3">Save</button>
+      <button type="button" class="btn btn-danger mt-3 ml-3" (click)="deleteProduct()">Delete</button>
+    </form>
   </div>
-  <div class="form=group">
-    <label for="price">Price</label>
-    <input id="price" type="number" class="form-control">
+  <div class="col-md-6">
+    <div *ngIf="product.title" class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="product.imageUrl" *ngIf="product.imageUrl">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.price | currency : 'GBP' }}</p>
+      </div>
+    </div>
   </div>
-  <div class="form=group">
-    <label for="category">Category</label>
-    <select id="category" class="form-control">
-      <option value=""></option>
-    </select>
-  </div>
-  <div class="form=group">
-    <label for="imageUrl">Image URL</label>
-    <input id="imageUrl" type="text" class="form-control">
-  </div>
-  <button class="btn btn-primary">Save</button>
-</form>
+</div>
