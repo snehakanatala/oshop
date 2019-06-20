@@ -36,6 +36,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { ProductCardComponent } from './products/product-card/product-card.component';
+import { ShoppingCartService } from './shopping-cart.service';
+import { ProductQuantityComponent } from './products/product-quantity/product-quantity.component';
+import { OrderService } from './order.service';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,10 @@ import { MatListModule } from '@angular/material/list';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductCardComponent,
+    ProductQuantityComponent,
+    OrderSummaryComponent
     
   ],
   imports: [
@@ -76,7 +84,7 @@ import { MatListModule } from '@angular/material/list';
       { path: 'shopping-cart', component : ShoppingCartComponent },
       { path: 'login', component : LoginComponent},
       { path: 'check-out', component: CheckOutComponent, canActivate : [AuthGuardService] },
-      { path: 'order-success', component: OrderSuccessComponent, canActivate : [AuthGuardService] },  
+      { path: 'order-success/:id', component: OrderSuccessComponent, canActivate : [AuthGuardService] },  
       { path: 'my-orders', component: MyOrdersComponent, canActivate : [AuthGuardService] },           
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate : [AuthGuardService, AdminAuthGuardService]},
       { path: 'admin/products/new', component: ProductFormComponent, canActivate : [AuthGuardService, AdminAuthGuardService]},
@@ -90,7 +98,9 @@ import { MatListModule } from '@angular/material/list';
     AuthGuardService,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

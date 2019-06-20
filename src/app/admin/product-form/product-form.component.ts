@@ -5,6 +5,8 @@ import { ProductService } from 'src/app/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { take } from 'rxjs/operators';
+import { Product } from 'src/app/models/product';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-form',
@@ -17,7 +19,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   categories;
-  product = {};
+  product = { payload : {}};
   id;
 
   constructor(
@@ -27,7 +29,11 @@ export class ProductFormComponent implements OnInit {
     private route : ActivatedRoute) {
     categoryService.getCategories().subscribe(categories => this.categories=categories);
     this.id = this.route.snapshot.paramMap.get('id');
-    if(this.id) this.productService.getProduct(this.id).valueChanges().subscribe(product => this.product = product);
+    if(this.id) 
+      this.productService.getProduct(this.id).valueChanges()
+      .subscribe(product => {
+        this.product = { payload :  product };
+      });
   }
 
   save(product) {

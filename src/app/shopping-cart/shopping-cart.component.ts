@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from '../shopping-cart.service';
+import { ShoppingCart } from '../models/shopping-cart';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  cart : ShoppingCart;
+  dataSource : MatTableDataSource<any> = new MatTableDataSource();
+  displayedColumns = ['image', 'title', 'quantity', 'totalPrice'];
 
-  ngOnInit() {
+  constructor(private cartService : ShoppingCartService) { }
+
+  async ngOnInit() {
+    (await this.cartService.getCart()).subscribe(cart => {
+      this.cart = cart;
+      this.dataSource.data = Object.values(this.cart.items);
+    });    
   }
 
+  clearCart() {
+    this.cartService.clearCart();
+  }
 }

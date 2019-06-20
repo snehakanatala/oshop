@@ -32,6 +32,7 @@ export class AdminProductsComponent implements OnInit {
           return { key : pro.key, payload : pro.payload.val()};
           });
         this.dataSource.data = this.filProds;
+        console.log(this.dataSource.data);
         return this.filProds;
       }); 
   }

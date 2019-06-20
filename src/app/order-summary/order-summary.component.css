@@ -1,0 +1,12 @@
+
+.mat-footer-cell {
+    font-weight: bold;
+}
+
+mat-card-title {
+    color : coral;
+}
+
+mat-card-subtitle {
+    color : black;
+}

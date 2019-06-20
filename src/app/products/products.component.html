@@ -20,15 +20,7 @@
     <mat-grid-list cols="3">
       <div *ngFor="let product of filteredProducts">
         <mat-grid-tile>
-          <mat-card>
-            <img mat-card-image *ngIf="product.payload.imageUrl" [src]="product.payload.imageUrl" height="150"
-              width="200">
-            <mat-card-title>{{ product.payload.title }}</mat-card-title>
-            <mat-card-subtitle>{{ product.payload.price | currency : 'GBP' }}</mat-card-subtitle>
-            <mat-card-footer>
-              <button class="btn btn-primary btn-block">Add to cart</button>
-            </mat-card-footer>
-          </mat-card>
+          <product-card [product]="product" [shopping-cart]="cart"></product-card>
         </mat-grid-tile>
       </div>
     </mat-grid-list>
