@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './my-orders.component.html',
   styleUrls: ['./my-orders.component.css']
 })
+
 export class MyOrdersComponent implements OnInit, OnDestroy {
 
   myOrders : Order[];
