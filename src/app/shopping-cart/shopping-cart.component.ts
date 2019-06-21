@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  cart : ShoppingCart;
+  cart : ShoppingCart = new ShoppingCart({});
   dataSource : MatTableDataSource<any> = new MatTableDataSource();
   displayedColumns = ['image', 'title', 'quantity', 'totalPrice'];
 

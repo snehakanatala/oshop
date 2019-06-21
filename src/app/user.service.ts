@@ -5,7 +5,7 @@ import { defineBase } from '@angular/core/src/render3';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
 import { AppErrorSne } from './AppErrorSne';
 import { AppUser } from './models/app-user';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,6 @@ export class UserService {
   constructor(private db : AngularFireDatabase) {}
 
   save(user : firebase.User) {
-    // console.log(user);
     this.db.object('/users/' + user.uid).update({
       name : user.displayName,
       email : user.email

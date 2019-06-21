@@ -12,11 +12,11 @@ import { ShoppingCart } from '../models/shopping-cart';
 })
 export class BsNavbarComponent implements OnInit {
 
-  appUser : AppUser;
+  appUser$: Observable<AppUser>;
   cart$ : Observable<ShoppingCart>;
 
   constructor(private authService : AuthService, private cartService : ShoppingCartService) { 
-    authService.appUser$.subscribe(appUser => this.appUser = appUser);
+    this.appUser$ = this.authService.appUser$;
   }
 
   logout() {

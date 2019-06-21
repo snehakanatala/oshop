@@ -10,3 +10,7 @@ mat-header-cell,
     font-weight: bold;
     font-size: 15px;
 }
+
+a {
+    color : coral;
+}
