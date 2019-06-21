@@ -41,6 +41,9 @@ import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './products/product-quantity/product-quantity.component';
 import { OrderService } from './order.service';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { OrdersDisplayComponent } from './orders-display/orders-display.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     ProductFormComponent,
     ProductCardComponent,
     ProductQuantityComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    ShippingFormComponent,
+    OrdersDisplayComponent,
+    OrderDetailsComponent
     
   ],
   imports: [
@@ -89,7 +95,9 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate : [AuthGuardService, AdminAuthGuardService]},
       { path: 'admin/products/new', component: ProductFormComponent, canActivate : [AuthGuardService, AdminAuthGuardService]},
       { path: 'admin/products/:id', component: ProductFormComponent, canActivate : [AuthGuardService, AdminAuthGuardService]},
-      { path: 'admin/products', component: AdminProductsComponent, canActivate : [AuthGuardService, AdminAuthGuardService]}
+      { path: 'admin/products', component: AdminProductsComponent, canActivate : [AuthGuardService, AdminAuthGuardService]},
+      { path: 'orders/:id', component: OrderDetailsComponent, canActivate : [AuthGuardService] }
+
     ])
 
   ],

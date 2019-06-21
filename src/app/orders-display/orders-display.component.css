@@ -1,0 +1,12 @@
+mat-cell,
+.mat-cell,
+mat-header-cell,
+.mat-header-cell {
+    padding-right : 5rem !important;
+}
+
+.mat-header-cell {
+    color : black;
+    font-weight: bold;
+    font-size: 15px;
+}

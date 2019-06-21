@@ -32,14 +32,12 @@ export class AdminProductsComponent implements OnInit {
           return { key : pro.key, payload : pro.payload.val()};
           });
         this.dataSource.data = this.filProds;
-        console.log(this.dataSource.data);
         return this.filProds;
       }); 
   }
 
   filter(query : string) {
     console.log(query);
-    // this.dataSource.filter = query;
     this.filProds = (query) ? this.products.filter(p => p.payload.title.toLocaleLowerCase().includes(query.toLocaleLowerCase())) : this.products;
     this.dataSource.data = this.filProds;
   }
@@ -50,15 +48,3 @@ export class AdminProductsComponent implements OnInit {
   }
 
 }
-
-
-    // this.products$ = this.productService.getAll().snapshotChanges()
-    //   .pipe(map(products => {
-    //     return products
-    //       .map(product => {
-    //         return {
-    //           key: product.key,
-    //           payload: product.payload.val()
-    //         };
-    //       })
-    //   }));

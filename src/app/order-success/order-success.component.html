@@ -1,3 +1,19 @@
-<p>
-  order-success works!
-</p>
+<h2>Thank you for placing your order.</h2>
+<div>
+<div class="row">
+  <label>Order Id : </label>
+  <a class="labelDetail">{{ orderId }}</a>
+</div>
+<div class="row">
+    <label>Date placed : </label>
+    <a class="labelDetail">{{ orderDate }}</a>
+</div>
+<div class="row">
+    <label>Total paid : </label>
+    <a class="labelDetail">{{ order.totalPrice | currency : 'GBP'}}</a>
+</div>
+<div class="row">
+    <label>Shipping Address : </label>
+    <a class="labelDetail">{{ order.shipping.name }}, {{ order.shipping.address }}, {{ order.shipping.address2 }}, {{ order.shipping.city }}</a>
+</div>
+</div>

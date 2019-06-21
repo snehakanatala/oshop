@@ -1,0 +1,12 @@
+h2 {
+    color : coral;
+    padding-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.labelDetail {
+    padding-left: 20px;
+}

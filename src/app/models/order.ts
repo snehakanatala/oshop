@@ -10,7 +10,7 @@ export class Order {
     items : any;
     totalPrice : number;
 
-    constructor(public userId : string, public shipping: any, public shoppingCart : ShoppingCart) {
+    constructor(public userId : string, public shipping: any, shoppingCart : ShoppingCart) {
         this.datePlaced = new Date().getTime();    
         this.totalPrice = shoppingCart.totalPrice;    
         this.items = shoppingCart.items.map(i => {
